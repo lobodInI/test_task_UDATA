@@ -32,15 +32,22 @@ def parse_page(product: webdriver) -> dict:
     driver.get(link)
     click_button_for_view_info(driver)
 
-    name_product = driver.find_element(By.CLASS_NAME, "cmp-product-details-main__heading-title")
-    description = driver.find_element(By.CLASS_NAME, "cmp-product-details-main__description")
+    name_product = driver.find_element(
+        By.CLASS_NAME, "cmp-product-details-main__heading-title"
+    )
+    description = driver.find_element(
+        By.CLASS_NAME, "cmp-product-details-main__description"
+    )
     # info about calories, fats, carbs, proteins
     nutrition_summary = driver.find_elements(
-        By.CSS_SELECTOR, ".cmp-nutrition-summary__heading-primary-item .value"
+        By.CSS_SELECTOR, ".cmp-nutrition-summary__heading-primary-item "
+                         ".value"
     )
     # info about sugar, unsaturated fats, salt, portion
     additional_info = driver.find_elements(
-        By.CSS_SELECTOR, ".cmp-nutrition-summary__details-column-view-mobile .label-item .value"
+        By.CSS_SELECTOR, ".cmp-nutrition-summary__details-column-view-mobile "
+                         ".label-item "
+                         ".value"
     )
 
     return {
